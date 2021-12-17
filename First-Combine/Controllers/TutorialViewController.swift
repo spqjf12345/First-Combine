@@ -52,8 +52,10 @@ class TutorialViewController: UIViewController {
         //switchtoLatest()
         //networtSwitchToLatest()
         //mergeOperator()
-        
-        
+        //multicast()
+        //setScheduler()
+        //cancellable
+        handleEvent()
         
     }
     func puToSu(){
@@ -221,6 +223,90 @@ class TutorialViewController: UIViewController {
         publisher1.send(completion: .finished)
         publisher2.send(completion: .finished)
         
+    }
+    
+    func multicast(){
+        // 1. 업스트림 publisher가 방출하는 값과 완료 이벤트를 전달할 subject를 준비합니다.
+        let subject = PassthroughSubject<Data, URLError>()
+        // 2. 위의 subject를 사용하여 멀티캐스트 publisher를 준비합니다.
+        let multicasted = URLSession.shared
+          .dataTaskPublisher(for: URL(string: "https://medium.com/@rkdthd0403")!)
+          .map(\.data)
+          .print("shared")
+          .multicast(subject: subject)
+        // 3. 공유(멀티캐스트) 된 publisher를 구독합니다.
+        let subscription1 = multicasted
+          .sink(
+            receiveCompletion: { _ in },
+            receiveValue: { print("subscription1 received: '\($0)'") }
+          )
+        let subscription2 = multicasted
+          .sink(
+            receiveCompletion: { _ in },
+            receiveValue: { print("subscription2 received: '\($0)'") }
+          )
+        // 4. publisher(multicasted)에게 업스트림 publisher에 연결하도록 합니다.
+        multicasted.connect()
+        // 5. 두 구독 모두 데이터를 수신하는지 테스트하기 위해 빈 데이터 전송합니다.
+        subject.send(Data())
+    }
+    
+    func setScheduler(){
+        let publisher = ["Uri"].publisher
+        publisher.map {
+            _ in print(Thread.isMainThread)
+        }.receive(on: DispatchQueue.global())
+            .map{ print(Thread.isMainThread)}
+            .sink { print(Thread.isMainThread)}
+        
+    }
+    
+    func cancellable(){
+        let subject = PassthroughSubject<Int, Never>()
+        let subscriber = subject.sink(receiveValue: { value in print(value) })
+        subscriber.cancel()
+        subject.send(1)
+        
+        var bag = Set<AnyCancellable>()
+        let subjects = PassthroughSubject<Int, Never>()
+        subjects.sink(receiveValue: { value in
+            print(value)
+        })
+            .store(in: &bag)
+
+        
+    }
+    
+    func handleEvent(){
+        let subject = PassthroughSubject<String, Error>()
+        let subscriber = subject.handleEvents(receiveSubscription: { (subscription) in
+            print("Receive Subscription") // 1
+        }, receiveOutput: { output in
+            print("Receive Output : \(output)") // 3
+        }, receiveCompletion: { (completion) in
+            print("Receive Completion")
+            switch completion {
+                case .finished:
+                    print("finished")
+                case .failure(let error):
+                    print(error) }
+        }, receiveCancel: {
+            print("Receive Cancel") // 5
+        }, receiveRequest: { demand in
+            print("Receive Request: \(demand)") // 2
+        }).sink(receiveCompletion: { (completion) in
+            switch completion {
+                case .finished:
+                    print("finished")
+                case .failure(let error):
+                print(error)
+            } }
+        , receiveValue: { (value) in
+            print("Receive Value in sink : \(value)") // 4
+        })
+        
+        subject.send("Uri")
+        subscriber.cancel()
     }
     
 
