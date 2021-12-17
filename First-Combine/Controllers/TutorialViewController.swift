@@ -34,13 +34,11 @@ class UriSubscriber: Subscriber {
 
 
 class TutorialViewController: UIViewController {
-    //@IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var filterField: UITextField!
     let studingList = [String]()
     var subscriptions = [AnyCancellable]()
     
     var listViewModel = ListViewModel()
-    @Published var people = [[Person(name: "Julia"), Person(name: "Vicki")]]
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -8,48 +8,48 @@
 import Combine
 import Foundation
 import UIKit
-
-enum WeatherError: Error {
-    case thingsJustHappen
-}
-
-let weatherPublisher = PassthroughSubject<Int, WeatherError>()
-
-let subscriber = weatherPublisher
-    .filter { $0 > 25 }
-    .sink(receiveCompletion: { _ in }, receiveValue: { value in
-        print("A summer day of \(value) C")
-        })
-
-let anotherSubscriber = weatherPublisher.handleEvents(receiveSubscription: { subscription in
-        print("new subscription \(subscription)")
-    }, receiveOutput: { output in
-            print("new value : output \(output)")
-    }, receiveCompletion: { error in
-        print("subscription completed with potential error \(error)")
-    }, receiveCancel: {
-        print("subscrition cancelled")
-    }, receiveRequest:  { request in
-        print("receiveRequest \(request)")
-    }).sink(receiveCompletion: { _ in }, receiveValue: { value in
-        print("A summer day of \(value) C")
-        })
-
+import SwiftUI
 
 class ViewController: UIViewController {
     
-
+    @IBOutlet weak var tableView: UITableView!
+    var listModel = ListViewModel()
+    var cancelBags = Set<AnyCancellable>()
+    
+    lazy var tutorialViewController: TutorialViewController = {
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "TutorialViewController") as! TutorialViewController
+        return viewController
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        weatherPublisher.send(10)
-        weatherPublisher.send(20)
-        weatherPublisher.send(30)
-        weatherPublisher.send(40)
-        weatherPublisher.send(50)
-        // Do any additional setup after loading the view.
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        self.listModel.requestList()
     }
 
 
 
+}
+
+extension ViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.listModel.list.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        cell.textLabel?.text = self.listModel.list[indexPath.row].name
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if(indexPath.row == 0){
+            self.navigationController?.pushViewController(tutorialViewController, animated: true)
+        }
+    }
+    
+    
 }

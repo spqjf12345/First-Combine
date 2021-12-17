@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct Person {
+struct Person: Codable {
     var name: String
 }
