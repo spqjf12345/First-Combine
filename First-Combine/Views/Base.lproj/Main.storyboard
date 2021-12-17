@@ -52,9 +52,24 @@
                     <view key="view" contentMode="scaleToFill" id="Urm-J2-pEs">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Itx-85-Cps">
+                                <rect key="frame" x="100" y="144" width="214" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="w3o-sa-cGD"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Itx-85-Cps" firstAttribute="leading" secondItem="w3o-sa-cGD" secondAttribute="leading" constant="100" id="HVz-u2-GI7"/>
+                            <constraint firstItem="w3o-sa-cGD" firstAttribute="trailing" secondItem="Itx-85-Cps" secondAttribute="trailing" constant="100" id="u9i-OL-3je"/>
+                            <constraint firstItem="Itx-85-Cps" firstAttribute="top" secondItem="w3o-sa-cGD" secondAttribute="top" constant="100" id="vAu-gB-0mZ"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="filterField" destination="Itx-85-Cps" id="fku-3Q-c4D"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="63W-s5-To3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
