@@ -16,20 +16,15 @@ class TimerViewController: UIViewController {
     
     var mTimer : Timer?
     var number: Int = 0
+    var cancellable: Cancellable?
     
     @IBAction func onTimerStart(_ sender: Any) {
-        
-        if let timer = mTimer {
-            if !timer.isValid {
-                mTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
-                    self.updateDate()
-                }
-            }
-        }else{
-            mTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
-                self.updateDate()
-            }
-        }
+        cancellable = Timer.publish(every: 1, on: .main, in: .default)
+           .autoconnect()
+           .receive(on: DispatchQueue.main)
+           .sink(receiveValue: { date in
+               self.textLabel.text = date.description
+           })
 
     }
         
@@ -41,18 +36,8 @@ class TimerViewController: UIViewController {
     }
     
     @IBAction func onTimerEnd(_ sender: Any) {
-        
-        if let timer = mTimer {
-            if(timer.isValid){
-                timer.invalidate()
-            }
-        }
-        
-        DispatchQueue.main.async() {
-            self.number = 0
-            self.textLabel.text = String(self.number)
-        }
-
+        cancellable?.cancel()
+        self.textLabel.text = "0"
     }
     
     override func viewDidLoad() {
