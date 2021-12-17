@@ -45,11 +45,15 @@ class TutorialViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //puToSu()
-        notification()
-        personPublisher()
+        //notification()
+        //personPublisher()
         //currentValueSubject()
-        passthroughSubject()
-
+        //passthroughSubject()
+        //switchtoLatest()
+        //networtSwitchToLatest()
+        //mergeOperator()
+        
+        
         
     }
     func puToSu(){
@@ -125,6 +129,97 @@ class TutorialViewController: UIViewController {
         passthroughSubject.send("uri")
         passthroughSubject.send(completion: .finished)
         passthroughSubject.send("출력 안될 것")
+        
+        
+        let publisher = passthroughSubject.eraseToAnyPublisher() // PassthroughSubject였다는 사실을 숨김
+        // no send(_:)
+        
+    }
+    
+    func switchtoLatest(){
+        let publisher1 = PassthroughSubject<Int, Never>()
+        let publisher2 = PassthroughSubject<Int, Never>()
+        let publisher3 = PassthroughSubject<Int, Never>()
+        
+        let publishers = PassthroughSubject<PassthroughSubject<Int, Never>, Never>()
+        
+        publishers.switchToLatest()
+            .sink(receiveCompletion: { _ in
+                print("Completed")},
+            receiveValue: { print($0)})
+            .store(in: &subscriptions)
+        
+        publishers.send(publisher1)
+        publisher1.send(1)
+        publisher1.send(2)
+        
+        //publisher2 보내서 publisher1의 subscription 취고
+        publishers.send(publisher2)
+        publisher1.send(3)
+        publisher2.send(4)
+        publisher2.send(5)
+        
+        publishers.send(publisher3)
+        publisher2.send(6)
+        publisher3.send(7)
+        publisher3.send(8)
+        publisher3.send(9)
+        
+        publisher3.send(completion: .finished)
+        publishers.send(completion: .finished)
+    
+    }
+    
+    func networtSwitchToLatest(){
+        let url = URL(string: "https://source.unsplash.com/random")!
+        
+        func getImage() -> AnyPublisher<UIImage?, Never> {
+            print("here here")
+            return URLSession.shared.dataTaskPublisher(for: url)
+                .map { data, _ in UIImage(data: data)}
+                .print("image")
+                .replaceError(with: nil)
+                .eraseToAnyPublisher()
+        }
+        
+        let taps = PassthroughSubject<Void, Never>()
+        taps
+            .map { _ in getImage() }
+            .switchToLatest()
+            .sink(receiveCompletion: { _ in
+                print("Completed")},
+            receiveValue: { print($0)})
+            .store(in: &subscriptions)
+        
+        taps.send()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+            taps.send()
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 10.1) {
+            taps.send()
+        }
+        
+    }
+    
+    
+    func mergeOperator(){
+        let publisher1 = PassthroughSubject<Int, Never>()
+        let publisher2 = PassthroughSubject<Int, Never>()
+
+        publisher1.merge(with: publisher2).sink(receiveCompletion: { _ in
+            print("Completed")
+        }, receiveValue: { print($0) })
+        
+        publisher1.send(1)
+        publisher1.send(2)
+        
+        publisher2.send(3)
+        publisher1.send(4)
+        publisher2.send(5)
+        
+        publisher1.send(completion: .finished)
+        publisher2.send(completion: .finished)
         
     }
     
