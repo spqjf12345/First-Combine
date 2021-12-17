@@ -79,6 +79,64 @@
             </objects>
             <point key="canvasLocation" x="1620" y="82"/>
         </scene>
+        <!--Timer View Controller-->
+        <scene sceneID="1wZ-ld-jZL">
+            <objects>
+                <viewController storyboardIdentifier="TimerViewController" id="G54-9z-7Sc" customClass="TimerViewController" customModule="First_Combine" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yRi-Rp-bEr">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HNS-Fv-AxT">
+                                <rect key="frame" x="109.5" y="144" width="195" height="50"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NQg-DC-1OJ">
+                                        <rect key="frame" x="0.0" y="0.0" width="97.5" height="50"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="startButton"/>
+                                        <connections>
+                                            <action selector="onTimerStart:" destination="G54-9z-7Sc" eventType="touchUpInside" id="Wuu-uY-mhX"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ttl-C4-L7U">
+                                        <rect key="frame" x="97.5" y="0.0" width="97.5" height="50"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="endButton"/>
+                                        <connections>
+                                            <action selector="onTimerEnd:" destination="G54-9z-7Sc" eventType="touchUpInside" id="0aD-zh-v36"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="owp-SZ-MIU"/>
+                                </constraints>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y5Z-Na-BYs">
+                                <rect key="frame" x="207" y="448" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="TY9-dO-cio"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Y5Z-Na-BYs" firstAttribute="centerY" secondItem="yRi-Rp-bEr" secondAttribute="centerY" id="VAj-LS-z0U"/>
+                            <constraint firstItem="HNS-Fv-AxT" firstAttribute="top" secondItem="TY9-dO-cio" secondAttribute="top" constant="100" id="Vpg-BN-GKc"/>
+                            <constraint firstItem="HNS-Fv-AxT" firstAttribute="centerX" secondItem="yRi-Rp-bEr" secondAttribute="centerX" id="Wn9-lt-wuO"/>
+                            <constraint firstItem="Y5Z-Na-BYs" firstAttribute="centerX" secondItem="yRi-Rp-bEr" secondAttribute="centerX" id="l8o-09-bhL"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="endButton" destination="ttl-C4-L7U" id="qay-Lb-i83"/>
+                        <outlet property="startButton" destination="NQg-DC-1OJ" id="2D4-8O-r6e"/>
+                        <outlet property="textLabel" destination="Y5Z-Na-BYs" id="tsE-VX-kiE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WtO-n4-Fzp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2314" y="82"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="WDU-qE-vEk">
             <objects>

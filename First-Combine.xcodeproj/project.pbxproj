@@ -16,6 +16,7 @@
 		8E5AFE87276B36C400459100 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5AFE86276B36C400459100 /* ListViewModel.swift */; };
 		8E5AFE8C276B373900459100 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5AFE8B276B373900459100 /* TutorialViewController.swift */; };
 		8E5AFE90276BA6F400459100 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5AFE8F276BA6F400459100 /* Person.swift */; };
+		8E5AFE92276CF0B600459100 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5AFE91276CF0B600459100 /* TimerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		8E5AFE86276B36C400459100 /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
 		8E5AFE8B276B373900459100 /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		8E5AFE8F276BA6F400459100 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
+		8E5AFE91276CF0B600459100 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 			children = (
 				8E5AFE75276B358000459100 /* ViewController.swift */,
 				8E5AFE8B276B373900459100 /* TutorialViewController.swift */,
+				8E5AFE91276CF0B600459100 /* TimerViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -182,6 +185,7 @@
 				8E5AFE90276BA6F400459100 /* Person.swift in Sources */,
 				8E5AFE76276B358000459100 /* ViewController.swift in Sources */,
 				8E5AFE72276B358000459100 /* AppDelegate.swift in Sources */,
+				8E5AFE92276CF0B600459100 /* TimerViewController.swift in Sources */,
 				8E5AFE8C276B373900459100 /* TutorialViewController.swift in Sources */,
 				8E5AFE87276B36C400459100 /* ListViewModel.swift in Sources */,
 				8E5AFE74276B358000459100 /* SceneDelegate.swift in Sources */,

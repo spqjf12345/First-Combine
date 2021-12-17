@@ -22,6 +22,12 @@ class ViewController: UIViewController {
         return viewController
     }()
     
+    lazy var timerViewController: TimerViewController = {
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "TimerViewController") as! TimerViewController
+        return viewController
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.delegate = self
@@ -48,6 +54,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if(indexPath.row == 0){
             self.navigationController?.pushViewController(tutorialViewController, animated: true)
+        }else if(indexPath.row == 1){
+            self.navigationController?.pushViewController(timerViewController, animated: true)
         }
     }
     

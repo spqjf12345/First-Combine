@@ -13,6 +13,7 @@ class ListViewModel {
     var cancelBag = Set<AnyCancellable>()
     func requestList() {
         list.append(Person(name: "Tutorial"))
+        list.append(Person(name: "Timer"))
     }
 //    func requestList() {
 //        let url = URL(string: "http://localhost:8080/getJSON")!
