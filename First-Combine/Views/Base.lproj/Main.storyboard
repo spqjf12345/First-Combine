@@ -137,6 +137,21 @@
             </objects>
             <point key="canvasLocation" x="2314" y="82"/>
         </scene>
+        <!--Notification View Controller-->
+        <scene sceneID="9x6-tg-t8E">
+            <objects>
+                <viewController storyboardIdentifier="NotificationViewController" id="ewR-hm-OBu" customClass="NotificationViewController" customModule="First_Combine" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="dhX-Ay-fCU">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="ibF-UE-zdh"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rh9-MF-CYZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3013" y="90"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="WDU-qE-vEk">
             <objects>

@@ -28,6 +28,12 @@ class ViewController: UIViewController {
         return viewController
     }()
     
+    lazy var notificationViewController: NotificationViewController = {
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "NotificationViewController") as! NotificationViewController
+        return viewController
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.delegate = self
@@ -56,6 +62,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             self.navigationController?.pushViewController(tutorialViewController, animated: true)
         }else if(indexPath.row == 1){
             self.navigationController?.pushViewController(timerViewController, animated: true)
+        }else if(indexPath.row == 2){
+            self.navigationController?.pushViewController(notificationViewController, animated: true)
         }
     }
     
