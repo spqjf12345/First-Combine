@@ -15,6 +15,7 @@ class ListViewModel {
         list.append(Person(name: "Tutorial"))
         list.append(Person(name: "Timer"))
         list.append(Person(name: "Notification"))
+        list.append(Person(name: "Search"))
     }
 //    func requestList() {
 //        let url = URL(string: "http://localhost:8080/getJSON")!

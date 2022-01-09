@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4EDD96ACCC7AF9A00F8C3D2A /* Pods_First_Combine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C601B22FB2E8147A0CB6912F /* Pods_First_Combine.framework */; };
 		8E5AFE72276B358000459100 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5AFE71276B358000459100 /* AppDelegate.swift */; };
 		8E5AFE74276B358000459100 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5AFE73276B358000459100 /* SceneDelegate.swift */; };
 		8E5AFE76276B358000459100 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5AFE75276B358000459100 /* ViewController.swift */; };
@@ -18,9 +19,14 @@
 		8E5AFE90276BA6F400459100 /* Person.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5AFE8F276BA6F400459100 /* Person.swift */; };
 		8E5AFE92276CF0B600459100 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5AFE91276CF0B600459100 /* TimerViewController.swift */; };
 		8E5AFE94276DBBE500459100 /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E5AFE93276DBBE500459100 /* NotificationViewController.swift */; };
+		8EF8648F278AD4BC006CFEEC /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF8648E278AD4BB006CFEEC /* SearchViewController.swift */; };
+		8EF86491278AD95C006CFEEC /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF86490278AD95C006CFEEC /* Movie.swift */; };
+		8EF86494278ADA43006CFEEC /* MovieUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF86493278ADA43006CFEEC /* MovieUseCase.swift */; };
+		8EF86497278ADBE5006CFEEC /* Parsing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EF86496278ADBE5006CFEEC /* Parsing.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3BA6F7E03CF292CA2BBD4004 /* Pods-First-Combine.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-First-Combine.debug.xcconfig"; path = "Target Support Files/Pods-First-Combine/Pods-First-Combine.debug.xcconfig"; sourceTree = "<group>"; };
 		8E5AFE6E276B358000459100 /* First-Combine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "First-Combine.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E5AFE71276B358000459100 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8E5AFE73276B358000459100 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -34,6 +40,12 @@
 		8E5AFE8F276BA6F400459100 /* Person.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Person.swift; sourceTree = "<group>"; };
 		8E5AFE91276CF0B600459100 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
 		8E5AFE93276DBBE500459100 /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
+		8EF8648E278AD4BB006CFEEC /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		8EF86490278AD95C006CFEEC /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		8EF86493278ADA43006CFEEC /* MovieUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieUseCase.swift; sourceTree = "<group>"; };
+		8EF86496278ADBE5006CFEEC /* Parsing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parsing.swift; sourceTree = "<group>"; };
+		A8BF307BEE5BF1C0CB08F773 /* Pods-First-Combine.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-First-Combine.release.xcconfig"; path = "Target Support Files/Pods-First-Combine/Pods-First-Combine.release.xcconfig"; sourceTree = "<group>"; };
+		C601B22FB2E8147A0CB6912F /* Pods_First_Combine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_First_Combine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,17 +53,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4EDD96ACCC7AF9A00F8C3D2A /* Pods_First_Combine.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2B640ACE7A28766325789C4E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3BA6F7E03CF292CA2BBD4004 /* Pods-First-Combine.debug.xcconfig */,
+				A8BF307BEE5BF1C0CB08F773 /* Pods-First-Combine.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		8E5AFE65276B358000459100 = {
 			isa = PBXGroup;
 			children = (
 				8E5AFE70276B358000459100 /* First-Combine */,
 				8E5AFE6F276B358000459100 /* Products */,
+				2B640ACE7A28766325789C4E /* Pods */,
+				E6DB23BC9B8BCD23F405F959 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -66,6 +90,8 @@
 		8E5AFE70276B358000459100 /* First-Combine */ = {
 			isa = PBXGroup;
 			children = (
+				8EF86495278ADBD8006CFEEC /* Utils */,
+				8EF86492278AD9B8006CFEEC /* UseCases */,
 				8E5AFE71276B358000459100 /* AppDelegate.swift */,
 				8E5AFE73276B358000459100 /* SceneDelegate.swift */,
 				8E5AFE8A276B36EC00459100 /* Views */,
@@ -93,6 +119,7 @@
 				8E5AFE8B276B373900459100 /* TutorialViewController.swift */,
 				8E5AFE91276CF0B600459100 /* TimerViewController.swift */,
 				8E5AFE93276DBBE500459100 /* NotificationViewController.swift */,
+				8EF8648E278AD4BB006CFEEC /* SearchViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -101,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				8E5AFE8F276BA6F400459100 /* Person.swift */,
+				8EF86490278AD95C006CFEEC /* Movie.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -114,6 +142,30 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		8EF86492278AD9B8006CFEEC /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				8EF86493278ADA43006CFEEC /* MovieUseCase.swift */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		8EF86495278ADBD8006CFEEC /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				8EF86496278ADBE5006CFEEC /* Parsing.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		E6DB23BC9B8BCD23F405F959 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C601B22FB2E8147A0CB6912F /* Pods_First_Combine.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -121,9 +173,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8E5AFE82276B358700459100 /* Build configuration list for PBXNativeTarget "First-Combine" */;
 			buildPhases = (
+				B2ADDB7F3A575CFB2A306680 /* [CP] Check Pods Manifest.lock */,
 				8E5AFE6A276B358000459100 /* Sources */,
 				8E5AFE6B276B358000459100 /* Frameworks */,
 				8E5AFE6C276B358000459100 /* Resources */,
+				EB2410E6B960A3D7646FC833 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -180,6 +234,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		B2ADDB7F3A575CFB2A306680 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-First-Combine-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EB2410E6B960A3D7646FC833 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-First-Combine/Pods-First-Combine-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-First-Combine/Pods-First-Combine-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-First-Combine/Pods-First-Combine-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		8E5AFE6A276B358000459100 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -188,8 +284,12 @@
 				8E5AFE90276BA6F400459100 /* Person.swift in Sources */,
 				8E5AFE76276B358000459100 /* ViewController.swift in Sources */,
 				8E5AFE94276DBBE500459100 /* NotificationViewController.swift in Sources */,
+				8EF86494278ADA43006CFEEC /* MovieUseCase.swift in Sources */,
+				8EF86497278ADBE5006CFEEC /* Parsing.swift in Sources */,
+				8EF8648F278AD4BC006CFEEC /* SearchViewController.swift in Sources */,
 				8E5AFE72276B358000459100 /* AppDelegate.swift in Sources */,
 				8E5AFE92276CF0B600459100 /* TimerViewController.swift in Sources */,
+				8EF86491278AD95C006CFEEC /* Movie.swift in Sources */,
 				8E5AFE8C276B373900459100 /* TutorialViewController.swift in Sources */,
 				8E5AFE87276B36C400459100 /* ListViewModel.swift in Sources */,
 				8E5AFE74276B358000459100 /* SceneDelegate.swift in Sources */,
@@ -336,6 +436,7 @@
 		};
 		8E5AFE83276B358700459100 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3BA6F7E03CF292CA2BBD4004 /* Pods-First-Combine.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -364,6 +465,7 @@
 		};
 		8E5AFE84276B358700459100 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A8BF307BEE5BF1C0CB08F773 /* Pods-First-Combine.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

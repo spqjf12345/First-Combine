@@ -5,10 +5,11 @@
 //  Created by JoSoJeong on 2021/12/14.
 //
 
-import Combine
+//import Combine
 import Foundation
 import UIKit
 import SwiftUI
+import Combine
 
 class ViewController: UIViewController {
     
@@ -31,6 +32,12 @@ class ViewController: UIViewController {
     lazy var notificationViewController: NotificationViewController = {
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let viewController = storyboard.instantiateViewController(withIdentifier: "NotificationViewController") as! NotificationViewController
+        return viewController
+    }()
+    
+    lazy var searchViewController: SearchViewController = {
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "searchViewController") as! SearchViewController
         return viewController
     }()
     
@@ -64,6 +71,8 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             self.navigationController?.pushViewController(timerViewController, animated: true)
         }else if(indexPath.row == 2){
             self.navigationController?.pushViewController(notificationViewController, animated: true)
+        }else if(indexPath.row == 3){
+            self.navigationController?.pushViewController(searchViewController, animated: true)
         }
     }
     
