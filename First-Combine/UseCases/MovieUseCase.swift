@@ -15,8 +15,8 @@ protocol MovieUseCaseType {
   func loadImage() -> AnyPublisher<UIImage?, Never>
 }
 
-class MovieUseCase: MovieUseCaseType {
- 
-    
-    
-}
+//class MovieUseCase: MovieUseCaseType {
+// 
+//    
+//    
+//}

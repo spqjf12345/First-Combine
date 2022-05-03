@@ -13,7 +13,7 @@ import SwiftUI
 class UriSubscriber: Subscriber {
     
     typealias Input = String
-    
+
     typealias Failure = Never
     
     func receive(subscription: Subscription) { //1. subscriber에게 publisher를 성공적으로 구독했음을 알리고 item 요청
@@ -53,16 +53,21 @@ class TutorialViewController: UIViewController {
         //multicast()
         //setScheduler()
         //cancellable
-        handleEvent()
+        //handleEvent()
+        connectablePublisher()
         
     }
     func puToSu(){
         //studingList.publisher.bind(subscribers: tableView.rowsSubscriber(cell))
         
-        let publisherJust = Just("uri")
+        
 //        let subscriberJust = publisherJust.sink(receiveValue: { value in
 //            print(value)
 //        })
+        
+        //publisher 생성
+        
+        let publisherJust = Just("uri")
         
         //sink 방식
         let subscriber = publisherJust.sink(receiveCompletion: { (result) in switch result {
@@ -109,11 +114,12 @@ class TutorialViewController: UIViewController {
         currentValueSubject.send("하이")
     }
     
+    //Uri
+    //안녕
+    //하이
+    
     func passthroughSubject(){
         let passthroughSubject = PassthroughSubject<String, Never>()
-//        let subscriber = passthroughSubject.sink(receiveValue: {
-//            print($0)
-//        })
         
         let subscriber = passthroughSubject.sink(receiveCompletion: { (result) in
             switch result {
@@ -125,10 +131,31 @@ class TutorialViewController: UIViewController {
         }, receiveValue:  { value in
             print(value)
         })
+        
+        let subscriber2 = passthroughSubject.sink(receiveCompletion: { (result) in
+            switch result {
+            case .finished:
+                print("finished")
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }, receiveValue:  { value in
+            print(value)
+        })
+        
         passthroughSubject.send("hey")
+        subscriber.cancel()
         passthroughSubject.send("uri")
         passthroughSubject.send(completion: .finished)
         passthroughSubject.send("출력 안될 것")
+        
+        //subscriber1 : hey
+        //subscriber2 : hey
+        //subscriber1 : uri
+        //subscriber2 : uri
+        //subscriber1 : finished
+        //subscriber2 : finished
+        
         
         
         let publisher = passthroughSubject.eraseToAnyPublisher() // PassthroughSubject였다는 사실을 숨김
@@ -137,6 +164,7 @@ class TutorialViewController: UIViewController {
     }
     
     func switchtoLatest(){
+        currentValueSubject()
         let publisher1 = PassthroughSubject<Int, Never>()
         let publisher2 = PassthroughSubject<Int, Never>()
         let publisher3 = PassthroughSubject<Int, Never>()
@@ -305,6 +333,40 @@ class TutorialViewController: UIViewController {
         
         subject.send("Uri")
         subscriber.cancel()
+    }
+    
+    private func connectablePublisher(){
+        let publisher = ["hi", "hello"].publisher.makeConnectable()
+        let cancellable = publisher.sink(receiveValue: { print($0) })
+        publisher.autoconnect()
+        
+        let url = URL(string: "https://example.com/")!
+        let connectable = URLSession.shared
+            .dataTaskPublisher(for: url)
+            .map() { $0.data }
+            .catch() { _ in Just(Data() )}
+            .share()
+            .makeConnectable()
+
+        let cancellable1 = connectable
+            .sink(receiveCompletion: { print("Received completion 1: \($0).") },
+                  receiveValue: { print("Received data 1: \($0.count) bytes.") })
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            let cancellable2 = connectable
+                .sink(receiveCompletion: { print("Received completion 2: \($0).") },
+                      receiveValue: { print("Received data 2: \($0.count) bytes.") })
+        }
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            connectable.connect()
+        }
+        
+        let cancellables = Timer.publish(every: 1, on: .main, in: .default)
+            .autoconnect()
+            .sink() { date in
+                print ("Date now: \(date)")
+             }
     }
     
 

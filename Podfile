@@ -6,8 +6,4 @@ target 'First-Combine' do
   use_frameworks!
 
   # Pods for First-Combine
-pod 'OpenCombine', '~> 0.12.0'
-pod 'OpenCombineDispatch', '~> 0.12.0'
-pod 'OpenCombineFoundation', '~> 0.12.0'
-pod 'Alamofire', '~> 5.2'
 end
